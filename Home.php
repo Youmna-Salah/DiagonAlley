@@ -27,7 +27,7 @@
         Last Name: <input type="text" name = "last_name" /></br>
         E-mail*: <input type="text" name = "email"/> </br>
         Password: <input type="password" name = "password" value=""></br>
-        Confirm Password:  <input type="password" name="confirm_password" value=""></br>
+        Confirm Password:  <input type="password" name="confirm_password" value=""><p id="error_confirm_password"></p></br>
         image: <input type="file" name="image" value="Browse"></br>
         <h5>* required fields</h5></br>
         <input type="submit" value="register" name ="register"/>
@@ -35,6 +35,15 @@
     </div>
     <?php
       function register() {
+        if($_POST['password'] != $_POST['confirm_password']) {
+          echo "done";
+          echo "
+                <script  type=\'text/javascript'>
+                  document.getElementById('error_confirm_password').innerHTML='Confirmed password does not match the password';
+                </script>
+                ";
+          return;
+        }
         mysql_connect('localhost', "root");
         mysql_select_db('Diagon Alley');
        $query = 'insert into person (first_name, last_name, email, password) 
@@ -42,7 +51,7 @@
         $result = mysql_query($query) or die(mysql_error());
         
         if ($result) {
-          echo "YOU HAVE REGISTERED SUCCESSFULLY";
+          header("Location:Login.php");die;
         }
       }
     ?>
