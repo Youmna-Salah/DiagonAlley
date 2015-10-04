@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+  if (array_key_exists('register', $_POST)) {
+    register();
+  }
+?>
 <html>
 	<head>
 		<title>Advanced Lab Project</title>
@@ -15,14 +20,31 @@
    		</form>
     </div>
     <div>
-      <form action="Register.php" method="POST">
+      <form action="Home.php" method="POST">
+      <?php echo implode(" ",$_POST);?>
         <h3>Register</h3>
         First Name: <input type="text" name = "first_name" /></br>
+        Last Name: <input type="text" name = "last_name" /></br>
         E-mail*: <input type="text" name = "email"/> </br>
-        
-        <h5>* required fields</h5>
-        <input type="submit" value="Register"/>
+        Password: <input type="password" name = "password" value=""></br>
+        Confirm Password:  <input type="password" name="confirm_password" value=""></br>
+        image: <input type="file" name="image" value="Browse"></br>
+        <h5>* required fields</h5></br>
+        <input type="submit" value="register" name ="register"/>
       </form>
     </div>
+    <?php
+      function register() {
+        mysql_connect('localhost', "root");
+        mysql_select_db('Diagon Alley');
+       $query = 'insert into person (first_name, last_name, email, password) 
+                 values ("'.$_POST['first_name'].'","'.$_POST['last_name'].'","'.$_POST['email'].'","'.$_POST['password'].'");';
+        $result = mysql_query($query) or die(mysql_error());
+        
+        if ($result) {
+          echo "YOU HAVE REGISTERED SUCCESSFULLY";
+        }
+      }
+    ?>
 	</body>
 </html>
