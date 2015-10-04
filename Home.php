@@ -11,10 +11,10 @@
   				 $query = "SELECT * FROM `person`;";
   				 $result = mysql_query($query) or die(mysql_error());
   				 $numRows = mysql_num_rows($result);
-  				 if($numRow>0) {
-  				 	while($person = mysql_fetch_assoc($result)) {
-  				 		echo "<h2>$person['first_name']</h2>";
-  				 	}
+  				 if($numRows>0) {
+  				  while($person = mysql_fetch_assoc($result)) {
+  				    echo "<h2>${person['last_name']}</h2>";
+  				  }
   				 }
 
   				// echo($numRows);
