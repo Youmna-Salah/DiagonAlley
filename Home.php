@@ -1,9 +1,14 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Advanced Lab Project</title>
+    
 	</head>
 	<body>
-		<h1>
+  <div style="height: 200px; overflow:hidden; background: url(1.jpg);">
+  <h1 style="color:#fff">Hi</h1>
+		</div>
+    <h1>
 			<?php
   				 echo "Diagon Alley </br>";
   				 mysql_connect('localhost', 'root');
@@ -20,6 +25,13 @@
   				// echo($numRows);
 			?>
 		</h1>
+    <h1>My First JavaScript</h1>
+
+<button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+Click me to display Date and Time.</button>
+
+<p id="demo"></p>
 		<form action="LogIn.php" method="POST">
 
  			Name: <input type="text" name="name" />
