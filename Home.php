@@ -21,7 +21,7 @@
     </div>
     <div>
       <form action="Home.php" method="POST">
-      <?php echo implode(" ",$_POST);?>
+  
         <h3>Register</h3>
         First Name: <input type="text" name = "first_name" /></br>
         Last Name: <input type="text" name = "last_name" /></br>
