@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+body {
+  background: url(../img/1.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+
+header {
+  background: #834;
+  vertical-align: middle;
+}
+
+header * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+header .logo {
+  background: #222;
+  color: #ddd;
+  font-size: 1.5em;
+  margin: 0px 10px 0px 0px;
+  padding: 10px;
+}
+
+header>ul>li {
+  margin: 0px 10px 0px 0px;
+}
+
+header>ul>li>a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+header>ul>li>a:hover {
+  color: #fff;
+}

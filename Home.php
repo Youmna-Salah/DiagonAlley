@@ -10,7 +10,7 @@
     
 	</head>
 	<body>
-    <div style="height: 200px; overflow:hidden; background: url(img/1.jpg);"></div>
+    <div style="height: 200px; overflow:hidden; background: url(../img/1.jpg);"></div>
     <div>
   		<form action="LogIn.php" method="POST">
         <h3>Log In</h3>
