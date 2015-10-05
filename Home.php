@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+
   if (array_key_exists('register', $_POST)) {
     register();
   }
@@ -8,46 +9,67 @@
   }
 ?>
 <html>
-  <script type="text/javascript">
-    function checkInput(form) {
-      if(form.email.value == "") {
-        document.getElementById('error_email').innerHTML='Please insert your email';
-        form.email.focus();
-        return false;
-      }
-      if(form.password.value == "" || form.password.value.length < 6) {
-        document.getElementById('error_password').innerHTML='Password must be at least 6 characters!';
-        form.password.focus();
-        return false;
-      }
-      if(form.password.value != form.confirm_password.value) {
-        document.getElementById('error_confirm_password').innerHTML='Confirmed password did not match password';
-        form.confirm_password.focus();
-        return false
-      }
-      return true;
-    }
-    function checkLoginInput(form) {
-        if(form.email.value == "") {
-          document.getElementById('login_email').innerHTML='Please insert your email';
-          form.email.focus();
-          return false;
-        }
-        if(form.password.value == "") {
-          document.getElementById('login_password').innerHTML='Please insert your password';
-          form.password.focus();
-          return false;
-        }
-        return true;
-    }
-  </script>
+
 	<head>
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/Shop.css">
     <link rel="stylesheet" type="text/css" href="Welcome.css">
-  		<title>Diagon Alley</title>
-    
+  	<title>Diagon Alley</title>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var backgrounds = new Array(
+            'url(./img/1.jpg)',
+            'url(./img/2.jpg)');
+          var current = 0;
+          function nextBackground() {
+            current++;
+            current = current % backgrounds.length;
+            document.body.style.transitionDuration = "0.5s";
+            document.body.style.backgroundImage = backgrounds[current];
+
+          }
+
+          setInterval(nextBackground, 5000);
+
+          document.body.style.backgroundImage = backgrounds[0];
+      });
+
+      
+      function checkInput(form) {
+        if(form.email.value == "") {
+          document.getElementById('error_email').innerHTML='Please insert your email';
+          form.email.focus();
+          return false;
+        }
+        if(form.password.value == "" || form.password.value.length < 6) {
+          document.getElementById('error_password').innerHTML='Password must be at least 6 characters!';
+          form.password.focus();
+          return false;
+        }
+        if(form.password.value != form.confirm_password.value) {
+          document.getElementById('error_confirm_password').innerHTML='Confirmed password did not match password';
+          form.confirm_password.focus();
+          return false
+        }
+        return true;
+      }
+      function checkLoginInput(form) {
+          if(form.email.value == "") {
+            document.getElementById('login_email').innerHTML='Please insert your email';
+            form.email.focus();
+            return false;
+          }
+          if(form.password.value == "") {
+            document.getElementById('login_password').innerHTML='Please insert your password';
+            form.password.focus();
+            return false;
+          }
+          return true;
+      }
+      
+  </script>
 	</head>
 	<body>
     <header>
@@ -63,7 +85,7 @@
       </h1>
       <p id = "add">
         Do you need a new wand? Are you school robes short and you need new ones? You do not have time to go to London before the 1st of September? 
-        Now you can get all what you need from home. In here you can find all the authentic products of Diagon Alley, all what you need to do is a flock from your wand. 
+        Now you can get all what you need from home. In here you can find all the authentic products of Diagon Alley, all what you need is a flick from your wand. 
       </p>
     </div>
     <div id="login">
