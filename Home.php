@@ -55,6 +55,7 @@
         image: <input type="file" name="image" value="Browse" id="image"></br>
         <h5>* required fields</h5></br>
         <input type="submit" value="register" name ="register"/>
+
       </form>
     </div>
     <?php
@@ -63,8 +64,9 @@
         //echo phpinfo();
         mysql_connect('localhost', "root");
         mysql_select_db('Diagon Alley');
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT)."\n";
         $query = 'insert into person (first_name, last_name, email, password) 
-                 values ("'.$_POST['first_name'].'","'.$_POST['last_name'].'","'.$_POST['email'].'","'.$_POST['password'].'");';
+                 values ("'.$_POST['first_name'].'","'.$_POST['last_name'].'","'.$_POST['email'].'","'.$password.'");';
         $result = mysql_query($query) or die(mysql_error());
         
         if ($result) {
