@@ -42,32 +42,51 @@
     }
   </script>
 	<head>
-		<title>Advanced Lab Project</title>
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/Shop.css">
+    <link rel="stylesheet" type="text/css" href="Welcome.css">
+  		<title>Diagon Alley</title>
     
 	</head>
 	<body>
-    <div style="height: 200px; overflow:hidden; background: url(img/1.jpg);"></div>
-    <div>
+    <header>
+      <p class="logo">Diagon Alley</p>
+      <ul>
+        <li><a href="#shophome">Shop Home</a></li>
+        <li><a href="#history">History</a></li>
+      </ul>
+  </header>
+    <div id= "welcome">
+      <h1 id = "welcome_text">
+        Welcome to Diagon Alley Online!
+      </h1>
+      <p id = "add">
+        Do you need a new wand? Are you school robes short and you need new ones? You do not have time to go to London before the 1st of September? 
+        Now you can get all what you need from home. In here you can find all the authentic products of Diagon Alley, all what you need to do is a flock from your wand. 
+      </p>
+    </div>
+    <div id="login">
   		<form onsubmit = "return checkLoginInput(this);" action = "Home.php" method="POST">
         <h3>Log In</h3>
-   			E-mail: <input type="text" name="email" />
+   			E-mail: <input type="text" name="email" class="defaultTextBox"  />
         <p id="login_email"></p>
-  			Password: <input type="password" name="password"/>
+  			Password: <input type="password" name="password" class="defaultTextBox"/>
         <p id = "login_password"></p>
-   			<input type="submit" value="LogIn" name = "LogIn"/>
+   			<input type="submit" value="LogIn" name = "LogIn" />
    		</form>
     </div>
-    <div>
+    <div id="register">
       <form onsubmit="return checkInput(this);" action = "Home.php" method="POST" enctype="multipart/form-data">
   
         <h3>Register</h3>
-        First Name: <input type="text" name = "first_name" /></br>
-        Last Name: <input type="text" name = "last_name" /></br>
-        E-mail*: <input type="text" name = "email"/> </br>
+        First Name: <input type="text" name = "first_name" class="defaultTextBox"/></br>
+        Last Name: <input type="text" name = "last_name" class="defaultTextBox"/></br>
+        E-mail*: <input type="text" name = "email" class="defaultTextBox"/> </br>
         <p id="error_email"> </p>
-        Password*: <input type="password" name = "password" value=""></br>
+        Password*: <input type="password" name = "password" value="" class="defaultTextBox"/></br>
         <p id="error_password"></p>
-        Confirm Password*:  <input type="password" name="confirm_password" value="">
+        Confirm Password*:  <input type="password" name="confirm_password" value="" class="defaultTextBox"/>
         <p id="error_confirm_password"></p></br>
         image: <input type="file" name="image" value="Browse" id="image"></br>
         <h5>* required fields</h5></br>
