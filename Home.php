@@ -24,6 +24,7 @@
       }
       return true;
     }
+  
   </script>
 	<head>
 		<title>Advanced Lab Project</title>
@@ -40,7 +41,7 @@
    		</form>
     </div>
     <div>
-      <form onsubmit="return checkInput(this);" action = "Home.php" method="POST">
+      <form onsubmit="return checkInput(this);" action = "Home.php" method="POST" enctype="multipart/form-data">
   
         <h3>Register</h3>
         First Name: <input type="text" name = "first_name" /></br>
@@ -51,21 +52,39 @@
         <p id="error_password"></p>
         Confirm Password*:  <input type="password" name="confirm_password" value="">
         <p id="error_confirm_password"></p></br>
-        image: <input type="file" name="image" value="Browse"></br>
+        image: <input type="file" name="image" value="Browse" id="image"></br>
         <h5>* required fields</h5></br>
         <input type="submit" value="register" name ="register"/>
       </form>
     </div>
     <?php
       function register() {
+        //echo implode(", ", $_FILES);
+        //echo phpinfo();
         mysql_connect('localhost', "root");
         mysql_select_db('Diagon Alley');
-       $query = 'insert into person (first_name, last_name, email, password) 
+        $query = 'insert into person (first_name, last_name, email, password) 
                  values ("'.$_POST['first_name'].'","'.$_POST['last_name'].'","'.$_POST['email'].'","'.$_POST['password'].'");';
         $result = mysql_query($query) or die(mysql_error());
         
         if ($result) {
-          header("Location:Login.php");die;
+          if(array_key_exists('image', $_FILES)) {
+            $target_dir = "Public/ProfilePictures/";
+            $target_file = $target_dir . basename($_FILES["image"]["name"]);
+            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            //echo implode("hhh ",$_FILES);
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+              $upload_query = 'update person SET image = "'.$target_file.'" where email= "'.$_POST["email"].'";';
+              $result = mysql_query($upload_query) or die(mysql_error());
+              if($result) {
+                header("Location:Login.php");die;
+              }
+              //echo "The file ". basename( $_POST["image"]). " has been uploaded.";
+            } else {
+              echo "Sorry, there was an error uploading your file.";
+            }
+          }
+          
         }
       }
     ?>
