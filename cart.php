@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	if (array_key_exists('Purchase', $_POST)) {
+    	purchase();
+  	}
 ?>
 <html>
 	<head>
-
+		<script type="text/javascript">
+			function confirm(form) {
+				alert("Are you sure you want to buy this product? " );
+				return true;
+			}
+		</script>
 		<style type="text/css">
 			body{
 				background-image: url('./img/1.jpg');
@@ -81,7 +89,7 @@
 				top: 100px;
 				left: 175px;
 				width: 75%;
-				min-height: 175px;
+				min-height: 75px;
 				background-color: rgba(255,255,255, 0.3);
 				border-radius: 5px;
 			}
@@ -117,32 +125,56 @@
 	      	</ul>
 		</header>
 		<h3>Please confirm your purchase!</h3>
-		<div>
-		<table id = "table">
-			<th class = 'normal'>Name</th>
-			<th class = 'normal'>Summary</th>
-			<th class = 'normal'>Price</th>
+			<form  onsubmit = "return confirm(this);" action = "cart.php" method="POST">
+				<table id = "table">
+					<th class = 'normal'>Name</th>
+					<th class = 'normal'>Summary</th>
+					<th class = 'normal'>Price</th>
+				
+					<?php
+						mysql_connect('localhost', "root");
+			        	mysql_select_db('Diagon Alley');
+			        	$id = $_SESSION['id'];
+			        	$query = "select * from cart where person_id = ". $id;
+			        	$result = mysql_query($query) or die(mysql_error());
+			        	$numRows = mysql_num_rows($result);
+			        	
+			        	while ($id = mysql_fetch_assoc($result)) { 
+			        		$query = 'select * from product where id = "'. $id['product_id'] .'" Limit 1;';
+			        		$result = mysql_query($query) or die(mysql_error());
+			        		$product = mysql_fetch_assoc($result);
+			        		$_SESSION['product_id'] = $product['id'];
+			        		$_SESSION['product_name'] = $product['name'];
+			        		$_SESSION['product_summary'] = $product['summary'];
 		
+			        		$_SESSION['product_quantity'] = $product['quantity'];
+			        		echo "<tr><th class = 'normal'>{$product['name']}</th> 
+			        			  <th class = 'normal'>{$product['summary']}</th>
+			        			  <th class= 'normal'> {$product['price']}$</th>
+			        			  <th class = 'button'><input type = 'submit' name = 'Purchase' value = 'Purchase' /> </th><tr>";
+						}
+					?>
+				</table>
+			</form>
+		</div>
 		<?php
-			mysql_connect('localhost', "root");
-        	mysql_select_db('Diagon Alley');
-        	$id = $_SESSION['id'];
-        	$query = "select * from cart where person_id = ". $id;
-        	$result = mysql_query($query) or die(mysql_error());
-        	$numRows = mysql_num_rows($result);
-        	
-        	while ($id = mysql_fetch_assoc($result)) { 
-        		$query = 'select * from product where id = "'. $id['product_id'] .'" Limit 1;';
-        		$result = mysql_query($query) or die(mysql_error());
-        		$product = mysql_fetch_assoc($result);
-        		
-        		echo "<tr><th class = 'normal'>{$product['name']}</th> 
-        			  <th class = 'normal'>{$product['summary']}</th>
-        			  <th class= 'normal'> {$product['price']}$</th>
-        			  <th class = 'button'><input type = 'submit'/> </th><tr>";
+			function purchase() {
+				mysql_connect('localhost', "root");
+			    mysql_select_db('Diagon Alley');
+			    $query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
+			    $result = mysql_query($query) or die(mysql_error());
+			    if($result) {
+			    	$query = 'insert into purchase (person_id, product_id, quantity, purchase_time) 
+			    				         values ("'. $_SESSION['id'].'", " '.$_SESSION['product_id'].'"," '.$_SESSION['product_quantity'].'", '.'NOW())';
+			    
+			    	$result = mysql_query($query) or die(mysql_error());
+			    	if($result) {
+			    		header("Location:cart.php"); echo "doneeeee"; die;
+			    	}
+			    	
+			    }
+
 			}
 		?>
-		</table>
-		</div>
 	</body>
 </html>
