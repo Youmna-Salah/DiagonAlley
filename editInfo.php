@@ -8,12 +8,13 @@
           $connection = mysql_connect('localhost', 'root');
           mysql_select_db('DigonAlley');
       ?>
-      <form method="post" action="edit.php">
+      <form method="post" action="edit.php" enctype="multipart/form-data">
 first_name: <input type="text" name="first_name" value="your name" /><br />
 email: <input type="text" name="email" value=""/><br />
 password: <input type="password" name="password" value=""/><br />
 Last_name: <input type="text" name="last_name" value=""/><br />
-Avatar:<input type="file" name="image" value=""/><br />
+Avatar:<input type="file" name="image" value="Browse" id="image"></br>
+<!-- <input type="file" name="image" value=""/><br /> -->
 <input type= "submit" name = "edit" value="Update">
 </form>
 </h1>
