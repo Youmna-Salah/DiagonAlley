@@ -1,3 +1,9 @@
+<?php
+  mysql_connect('localhost', 'root');
+  mysql_select_db('Diagon Alley');
+  // $query = "SELECT";
+  
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +22,8 @@
       <li><a href="#history">History</a></li>
     </ul>
   </header>
+  
+  <script>var merchandise = <?=json_encode($result)?>;</script>
 </body>
 
 </html>
