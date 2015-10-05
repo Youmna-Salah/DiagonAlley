@@ -85,7 +85,7 @@
 				background-color: rgba(255,255,255, 0.3);
 				border-radius: 5px;
 			}
-			th {
+			th.normal{
 				border-radius: 2px;
 				border-color: #cccccc;
 				font-family: "Times New Roman", Times, serif;
@@ -94,6 +94,17 @@
 			div{
 
 				padding: 40px;
+			}
+			input[type="submit"]{
+				background-color: rgb(50,50,50);
+		        width: 80px;
+		        height: 30px;
+		        color: white;
+		        text-align: center;
+		        vertical-align: center;
+		        border-radius: 5px;
+		        
+		        box-shadow: 20px 20px 20px #555555 inset;
 			}
 		</style>
 	</head>
@@ -108,9 +119,9 @@
 		<h3>Please confirm your purchase!</h3>
 		<div>
 		<table id = "table">
-			<th>Name</th>
-			<th>Summary</th>
-			<th>Price</th>
+			<th class = 'normal'>Name</th>
+			<th class = 'normal'>Summary</th>
+			<th class = 'normal'>Price</th>
 		
 		<?php
 			mysql_connect('localhost', "root");
@@ -125,9 +136,10 @@
         		$result = mysql_query($query) or die(mysql_error());
         		$product = mysql_fetch_assoc($result);
         		
-        		echo "<tr><th id = 'normal'>{$product['name']}</th> 
-        			  <th id = 'normal'>{$product['summary']}</th>
-        			  <th id = 'normal'> {$product['price']}$</th> <tr>";
+        		echo "<tr><th class = 'normal'>{$product['name']}</th> 
+        			  <th class = 'normal'>{$product['summary']}</th>
+        			  <th class= 'normal'> {$product['price']}$</th>
+        			  <th class = 'button'><input type = 'submit'/> </th><tr>";
 			}
 		?>
 		</table>
