@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `person` (
 --
 
 INSERT INTO `person` (`id`, `first_name`, `last_name`, `email`, `password`, `image`, `access_token`) VALUES
-(1, 'Sherief', 'Abdelrazzak', 'sherief.abdelrazzak@gmail.com', 'jdgjfgskdf', NULL, NULL);
+(1, 'Sherief', 'Abdelrazzak', 'sherief.abdelrazzak@gmail.com', 'zazazaza', NULL, NULL);
 
 -- --------------------------------------------------------
 
