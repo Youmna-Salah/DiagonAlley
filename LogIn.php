@@ -58,7 +58,7 @@
 		<header>
 		    <p class="logo">Diagon Alley</p>
 		    <ul>
-		      <li><a href="#shophome">Shop Home</a></li>
+		      <li><a href="Shop.php">Shop Home</a></li>
 		      <li><a href="#history">History</a></li>
 		    </ul>
   		</header>

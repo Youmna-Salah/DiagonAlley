@@ -3,15 +3,24 @@
 	session_start();
 	if (array_key_exists('Purchase', $_POST)) {
     	purchase();
+    	return;
+  	}
+  	if (array_key_exists('delete', $_POST)) {
+  		delete();
+  		return;
   	}
 ?>
 <html>
 	<head>
 		<script type="text/javascript">
 			function confirm(form) {
-				alert("Are you sure you want to buy this product? " );
+				alert("Are you sure? " );
 				return true;
 			}
+			// function delete() {
+			// 	alert("Are you sure you want to delete this product from your cart? " );
+			// 	return true;
+			// }
 		</script>
 		<style type="text/css">
 			body{
@@ -103,7 +112,7 @@
 
 				padding: 40px;
 			}
-			input[type="submit"]{
+			input[type="submit"],button{
 				background-color: rgb(50,50,50);
 		        width: 80px;
 		        height: 30px;
@@ -151,7 +160,8 @@
 			        		echo "<tr><th class = 'normal'>{$product['name']}</th> 
 			        			  <th class = 'normal'>{$product['summary']}</th>
 			        			  <th class= 'normal'> {$product['price']}$</th>
-			        			  <th class = 'button'><input type = 'submit' name = 'Purchase' value = 'Purchase' /> </th><tr>";
+			        			  <th class = 'button'><input type = 'submit' name = 'Purchase' value = 'Purchase' />
+			        			  <input type='submit'  name = 'delete' value = 'Delete' /> </th><tr>";
 						}
 					?>
 				</table>
@@ -169,11 +179,20 @@
 			    
 			    	$result = mysql_query($query) or die(mysql_error());
 			    	if($result) {
-			    		header("Location:cart.php"); echo "doneeeee"; die;
+			    		header("Location:cart.php");  die;
 			    	}
 			    	
 			    }
 
+			}
+			function delete() {
+				mysql_connect('localhost', "root");
+			    mysql_select_db('Diagon Alley');
+			    $query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
+			    $result = mysql_query($query) or die(mysql_error());
+			    if($result) {	
+			    	header("Location:cart.php");  die;
+			    }
 			}
 		?>
 	</body>
