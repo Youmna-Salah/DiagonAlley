@@ -4,11 +4,20 @@
 
 	</head>
 	<body>
-    <div id = "div1">
-      <a href="#home">
-        <img src="http://fontmeme.com/embed.php?text=Diagon%20Alley&name=Lumos.ttf&size=50&style_color=D4AF37" alt="Harry Potter Font">
-      </a>
-    </div>
+   <header>
+     <div id = "div1">
+            <a href="Home.php">
+             <img src="http://fontmeme.com/embed.php?text=Diagon%20Alley&name=Lumos.ttf&size=20&style_color=D4AF37" >
+         </a>
+        </div>
+        <ul>
+            <li><a href="Shop.php">Shop</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="cart.php">Cart</a></li>
+             <li><a href="#logout">Log out</a></li>
+          </ul>
+  </header>
+    
     <div id = "div2">
 		<h1>
       <a href="http://fontmeme.com/harry-potter-font/"><img src="http://fontmeme.com/embed.php?text=Change%20Your%20secret%20spells....&name=HogwartsWizard.ttf&size=40&style_color=0C0C66" alt="Harry Potter Font"></a>
