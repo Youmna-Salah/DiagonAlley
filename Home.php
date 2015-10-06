@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<?php
-
+<?php session_start();
+  if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    header("Location:Login.php");die;
+  }
   if (array_key_exists('register', $_POST)) {
     register();
   }
@@ -26,7 +28,7 @@
           function nextBackground() {
             current++;
             current = current % backgrounds.length;
-            document.body.style.transitionDuration = "0.5s";
+            document.body.style.transitionDuration = "1s";
             document.body.style.backgroundImage = backgrounds[current];
 
           }
@@ -158,8 +160,12 @@
         if($numRows>0) {
 
           if(password_verify($_POST['password'], $realRes)) {
+            $query = 'select id from person where email ="'.$_POST["email"].'" limit 1;';
+            $result = mysql_query($query) or die(mysql_error());
+            $realRes = implode("",mysql_fetch_assoc($result));
+            $_SESSION['id'] = $realRes;
+            $_SESSION['email'] = $_POST['email'];
             
-            session_start();
             header("Location:Login.php");die;
           }
           else {
