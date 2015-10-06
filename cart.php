@@ -192,7 +192,7 @@
 			    	
 			    	$quantity = implode("",mysql_fetch_assoc($result));
 			    	if($_SESSION['stock']>=$quantity) {
-			    		echo "yesyesyes";
+			    		
 			    		$stock = (int)$_SESSION['stock'] - (int)$quantity;
 			    	
 				    	$query = 'update product set stock = '. $stock. ' where id = '. $_SESSION['product_id'];
@@ -200,17 +200,23 @@
 				    	
 				    	$query = 'insert into purchase (person_id, product_id, quantity, purchase_time) 
 				    				         values ("'. $_SESSION['id'].'", " '.$_SESSION['product_id'].'"," '.$quantity.'", '.'NOW())';
-				    				         echo $query;
+				    				         
 				    
 				    	$result = mysql_query($query) or die(mysql_error());
-				    		
+				    	$query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
+			    		$result = mysql_query($query) or die(mysql_error());
+			    	
 						//header("Location:cart.php");  die;
-
+				    	echo '<script>alert("Purchase is done successfully!"); window.location.href= "cart.php";</script>';
 			    		
+			    	} else{
+			    		$query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
+			    		$result = mysql_query($query) or die(mysql_error());
+			    	
+						//header("Location:cart.php");  die;
+				    	echo '<script>alert("Sorry it seems that this product is out of stock!"); window.location.href= "cart.php";</script>';
 			    	}
-			    	$query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
-			    	$result = mysql_query($query) or die(mysql_error());
-			    	echo '<script>alert("Purchase is done successfully!"); window.location.href= "cart.php";</script>';
+			    	
 			    	$_SESSION['product_id'] = "";
 			        $_SESSION['product_name'] = "";
 			        $_SESSION['product_summary'] = "";
