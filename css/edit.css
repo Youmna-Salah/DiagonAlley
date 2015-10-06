@@ -1,0 +1,41 @@
+  body{background: url(../img/2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#div1
+{
+	width:110%;
+	height:10%;
+	opacity: 0.5;
+ background-image:
+    radial-gradient(
+      #2E2B2B,
+      #040000
+    );
+}
+
+#div2{
+		margin: auto;
+	text-align: center;
+	height:auto;
+	width:auto;
+	opacity: 0.8;
+	top: 50%;
+	bottom: 50%;
+	right: 50%;
+	left:50%;
+	background-image:
+    radial-gradient(
+      #F1E6C1,
+      #EBD27E
+    );
+
+}
+#title1{
+	background:url(http://fontmeme.com/harry-potter-font/);
+background-image: url(http://fontmeme.com/embed.php?text=Diagon%20Alley&name=HogwartsWizard.ttf&size=100&style_color=0C0C66);
+}
+
