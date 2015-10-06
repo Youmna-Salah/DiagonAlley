@@ -1,6 +1,6 @@
     form {
         color: black;
-        padding: 50px;
+        padding: 20px;
         vertical-align: 50px;
         word-spacing: 5px;
         font-size: 18px;
@@ -47,28 +47,27 @@
         box-shadow: 20px 20px 20px #555555 inset;
       }
       #login,#register {
-        width: 410px;
+         background-color: rgba(255,255,255,0.8);
+          width: 380px;
         box-shadow: 20px 20px 20px #aaaaaa inset;
-        min-height: 50px;
+        min-height: 10px;
         text-align: left;
-        position: absolute;
+        position: relative;
+        height: auto;
         left: 800px;
         background-color: rgba(255,255,255,0.8);
-        line-height: 40px;
-        margin: 15px;
+        line-height: 30px;
+        margin: 50px;
         border-radius: 10px;
         font-style: solid;
-      }
-      #login {
-        text-align: top;
+        padding: 1px;
         
       }
-      #register{
-        top:300px;
-      }
+      
+     
       #login:hover,#register:hover{
         background-color: rgba(255,255,255,1);
-        box-shadow: 20px 20px 20px #cccccc inset;
+        box-shadow: 50px 50px 50px #cccccc inset;
       }
 
       h3{
@@ -93,4 +92,51 @@
         top: 330px;
         font-size: 20px;
         text-align: center;
+      }
+      header{
+        display: inline-block;
+
+          vertical-align: middle; 
+      }
+      header>ul>li {
+        
+        padding-right: 30px;
+        padding-left: 30px;
+          margin: 0px 10px 0px 0px;
+      }
+
+      header>ul>li>a {
+        color: #ddd;
+        text-decoration: none;
+      }
+
+      header>ul>li>a:hover {
+        color: #fff;
+      }
+      header {
+        width:100%;
+        margin: 0px;
+          background: #834;
+          padding: 5px;
+          box-shadow: 0px 0px 1px #222;
+        background: #834;
+        font-size: 20px;
+      }
+
+      header * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+      }
+      #div1{
+        margin-left: auto;
+        vertical-align: middle;
+        padding: 0px;
       }

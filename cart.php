@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	if($_SESSION['id'] == null) {
+		echo("Please log in to see your cart");
+	}
 	if (array_key_exists('Purchase', $_POST)) {
     	purchase();
     	return;
@@ -26,9 +29,13 @@
 			}
 			header{
 				display: inline-block;
+
   				vertical-align: middle;	
 			}
 			header>ul>li {
+				
+				padding-right: 30px;
+				padding-left: 30px;
   				margin: 0px 10px 0px 0px;
 			}
 
@@ -42,9 +49,12 @@
 			}
 			header {
 				width:100%;
-			  background: #834;
-			  vertical-align: middle;
-			  box-shadow: 0px 2px 1px #222;
+				margin: 0px;
+			  	background: #834;
+			  	padding: 5px;
+			  	box-shadow: 0px 0px 1px #222;
+ 				background: #834;
+ 				font-size: 20px;
 			}
 
 			header * {
@@ -52,18 +62,17 @@
 			  vertical-align: middle;
 			}
 
-			header .logo {
-			  background: #311;
-			  color: #fff;
-			  font-size: 1.5em;
-			  margin: 0px 10px 0px 0px;
-			  padding: 10px;
-			}
+			
 			* {
 			  box-sizing: border-box;
 			  margin: 0px;
 			  padding: 0px;
 			  border: 0px;
+			}
+			#div1{
+				margin-left: auto;
+				vertical-align: middle;
+				padding: 0px;
 			}
 			table,tr, th{
 				border: 1px groove;
@@ -117,17 +126,22 @@
 		        text-align: center;
 		        vertical-align: center;
 		        border-radius: 5px;
-		        
 		        box-shadow: 20px 20px 20px #555555 inset;
 			}
 		</style>
 	</head>
 	<body>
 		<header>
-			<p class="logo">Diagon Alley</p>
+			<div id = "div1">
+      			<a href="Home.php">
+       			 <img src="http://fontmeme.com/embed.php?text=Diagon%20Alley&name=Lumos.ttf&size=20&style_color=D4AF37" >
+     		 </a>
+   			</div>
 	     	<ul>
-		        <li><a href="#shophome">Shop Home</a></li>
+		        <li><a href="Shop.php">Shop</a></li>
 		        <li><a href="#history">History</a></li>
+		        <li><a href="#">Cart</a></li>
+		         <li><a href="#logout">Log out</a></li>
 	      	</ul>
 		</header>
 		<h3>Please confirm your purchase!</h3>

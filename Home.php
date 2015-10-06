@@ -75,11 +75,17 @@
 	</head>
 	<body>
     <header>
-      <p class="logo">Diagon Alley</p>
-      <ul>
-        <li><a href="shop.php">Shop Home</a></li>
-        <li><a href="#history">History</a></li>
-      </ul>
+     <div id = "div1">
+            <a href="Home.php">
+             <img src="http://fontmeme.com/embed.php?text=Diagon%20Alley&name=Lumos.ttf&size=20&style_color=D4AF37" >
+         </a>
+        </div>
+        <ul>
+            <li><a href="Shop.php">Shop</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#">Cart</a></li>
+             <li><a href="#logout">Log out</a></li>
+          </ul>
   </header>
     <div id= "welcome">
       <h1 id = "welcome_text">
