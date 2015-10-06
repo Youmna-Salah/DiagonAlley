@@ -140,7 +140,7 @@
 		        <li><a href="Shop.php">Shop</a></li>
 		        <li><a href="#history">History</a></li>
 		        <li><a href="#">Cart</a></li>
-		         <li><a href="#logout">Log out</a></li>
+		         <li><a href="logout.php">Log out</a></li>
 	      	</ul>
 		</header>
 		<h3>Please confirm your purchase!</h3>

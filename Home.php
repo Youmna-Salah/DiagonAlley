@@ -82,9 +82,9 @@
         </div>
         <ul>
             <li><a href="Shop.php">Shop</a></li>
-            <li><a href="#history">History</a></li>
-            <li><a href="cart.php">Cart</a></li>
-             <li><a href="#logout">Log out</a></li>
+            
+            
+             
           </ul>
   </header>
     <div id= "welcome">
