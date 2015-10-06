@@ -17,10 +17,7 @@
 				alert("Are you sure? " );
 				return true;
 			}
-			// function delete() {
-			// 	alert("Are you sure you want to delete this product from your cart? " );
-			// 	return true;
-			// }
+			
 		</script>
 		<style type="text/css">
 			body{
@@ -156,7 +153,7 @@
 			        		$_SESSION['product_name'] = $product['name'];
 			        		$_SESSION['product_summary'] = $product['summary'];
 		
-			        		$_SESSION['product_quantity'] = $product['quantity'];
+			        		$_SESSION['stock'] = $product['stock'];
 			        		echo "<tr><th class = 'normal'>{$product['name']}</th> 
 			        			  <th class = 'normal'>{$product['summary']}</th>
 			        			  <th class= 'normal'> {$product['price']}$</th>
@@ -169,21 +166,42 @@
 		</div>
 		<?php
 			function purchase() {
+				//echo implode(", ", $_SESSION);
 				mysql_connect('localhost', "root");
 			    mysql_select_db('Diagon Alley');
-			    $query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
+			    $query = 'select quantity from cart where product_id = "'.$_SESSION['product_id'].'"and person_id = "'. $_SESSION['id'].'" limit 1';
 			    $result = mysql_query($query) or die(mysql_error());
-			    if($result) {
-			    	$query = 'insert into purchase (person_id, product_id, quantity, purchase_time) 
-			    				         values ("'. $_SESSION['id'].'", " '.$_SESSION['product_id'].'"," '.$_SESSION['product_quantity'].'", '.'NOW())';
-			    
-			    	$result = mysql_query($query) or die(mysql_error());
-			    	if($result) {
-			    		header("Location:cart.php");  die;
-			    	}
+			    if( mysql_num_rows($result)>0) {
 			    	
-			    }
+			    	$quantity = implode("",mysql_fetch_assoc($result));
+			    	echo $quantity;
+			    	echo $_SESSION['stock'];
+			    	if($_SESSION['stock']>=$quantity) {
+			    		echo "yesyesyes";
+			    		$stock = (int)$_SESSION['stock'] - (int)$quantity;
+			    	
+				    	$query = 'update product set stock = '. $stock. ' where id = '. $_SESSION['product_id'];
+				    	$result = mysql_query($query) or die(mysql_error());
+				    	
+				    	$query = 'insert into purchase (person_id, product_id, quantity, purchase_time) 
+				    				         values ("'. $_SESSION['id'].'", " '.$_SESSION['product_id'].'"," '.$quantity.'", '.'NOW())';
+				    				         echo $query;
+				    
+				    	$result = mysql_query($query) or die(mysql_error());
+				    		
+						//header("Location:cart.php");  die;
 
+			    		
+			    	}
+			    	$query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
+			    	$result = mysql_query($query) or die(mysql_error());
+			    }
+			   
+			    
+			    	
+			    	header("Location:cart.php");  die;
+		
+			  
 			}
 			function delete() {
 				mysql_connect('localhost', "root");
