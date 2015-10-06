@@ -20,7 +20,8 @@
     <link rel="stylesheet" type="text/css" href="css/Shop.css">
     <title>Diagon Alley</title>
   </head>
-
+  
+  <!--TODO: CLEAR DUMMY DATA-->
   <body>
     <header>
       <p class="logo">Diagon Alley</p><!--
@@ -32,9 +33,8 @@
         <div class="aside" id="category-list">
         </div>
       </section><!--
-        
    --><section class="outer">
-        <section class="inner" id="cat-lol">
+        <section class="inner" id="cat-Wands">
           <div class="item">
             <div class="top">
               <p class="name">Chocolate filled wand</p>
@@ -42,12 +42,10 @@
               <p class="summary">A wand that is filled with chocolate</p>
             </div>
             <div class="bottom">
-              
               <div class="stock">
                 In stock: 1 <br>
               </div>
               <span class="price">
-
                 $12.00
               </span>
               <span class="buy">
@@ -55,12 +53,13 @@
               </span>
             </div>
           </div><!--
-            
        --></section>
       </section>
     </div>
 
     <div id="pagecovering"></div>
+    <div id="invisible cover"></div>
+    <!--TODO: finish these divs--> 
 
     <!--Scripts-->
     <script src="js/shop.js"></script>
@@ -77,7 +76,7 @@
             "summary" : "3ammatan gamda awy",
             "image" : "img/1.jpg",
             "price" : "1999.99",
-            "stock" : "1",
+            "stock" : "0",
             "category_id" : "mesh khales awy begad"
           }
         ]
