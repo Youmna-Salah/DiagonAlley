@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <?php
 	session_start();
-	if($_SESSION['id'] == null) {
-		echo("Please log in to see your cart");
-	}
+	
 	if (array_key_exists('Purchase', $_POST)) {
     	purchase();
     	return;
@@ -137,8 +135,8 @@
      		 </a>
    			</div>
 	     	<ul>
-		        <li><a href="Shop.php">Shop</a></li>
-		        <li><a href="#history">History</a></li>
+		        <li><a href="ShopBack.php">Shop</a></li>
+		        <li><a href="History.php">History</a></li>
 		        <li><a href="#">Cart</a></li>
 		         <li><a href="logout.php">Log out</a></li>
 	      	</ul>
@@ -171,7 +169,7 @@
 			        		$_SESSION['product_id'] = $product['id'];
 			        		$_SESSION['product_name'] = $product['name'];
 			        		$_SESSION['product_summary'] = $product['summary'];
-		
+							$_SESSION['product_image'] = $product['image'];
 			        		$_SESSION['stock'] = $product['stock'];
 			        		echo "<tr><th class = 'normal'>{$product['name']}</th> 
 			        			  <th class = 'normal'>{$product['summary']}</th>
@@ -214,6 +212,10 @@
 			    	}
 			    	$query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
 			    	$result = mysql_query($query) or die(mysql_error());
+			    	$_SESSION['product_id'] = "";
+			        $_SESSION['product_name'] = "";
+			        $_SESSION['product_summary'] = "";
+		
 			    }
 			   
 			    
