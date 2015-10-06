@@ -12,6 +12,11 @@
 ?>
 <html>
 
+
+
+
+
+
 	<head>
    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link rel="shortcut icon" href="img/favicon.png">

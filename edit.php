@@ -9,28 +9,31 @@
 mysql_connect ('localhost', 'root');
           mysql_select_db('DigonAlley');
           
-
+$UserId =  2 ;///     session->   $_SESSION["userID"];
 if (isset($_POST['edit'])) {
-    $udoldemail =$_POST['oldemail'];
     $udfirstName = $_POST['first_name'];
     $udlastName = $_POST['last_name'];
+    $udoldemail =$_POST['oldemail'];
     $udemail = $_POST['email'];
     $udpassword = $_POST['password'];
     $udavatar =isset($_POST['image'])?$_POST['image']:'';
     // Required field names
-$required = array('oldemail', 'password', 'first_name', 'last_name', 'image', 'email');
+$required = array($_POST['first_name'], $_POST['last_name'],$_POST['oldemail'] , $_POST['email'],  $_POST['password'],$_FILES["image"]["name"]);
 
 // Loop over field names, make sure each one exists and is not empty
 $error = false;
 foreach($required as $field) {
-  if (empty($_POST[$field])) {
+  if (empty($field) ) {
     $error = true;
+    break;
   }
 }
 
 if ($error) {
   echo "<script>alert('All fields are required.');</script>";
-} else {
+} 
+else {
+
   echo "<script>alert('Proceed...');</script>";
 	$query = "UPDATE `digonAlley`.`person` 
 	SET first_name ='$udfirstName'
@@ -60,9 +63,17 @@ else
             $target_dir = "/Applications/XAMPP/htdocs/DiagonAlley/Public/ProfilePictures/";
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            $newname =$UserId.".jpg";
+            $newnamedir =$target_dir.$newname;
+            // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            //   && $imageFileType != "gif" ) {
+            //   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            //   $uploadOk = 0;
+            //      }
+            //      else{
             //echo implode("hhh ",$_FILES);
-            if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-              $upload_query = 'update person SET image = "'.$target_file.'" where email= "'.$_POST["email"].'";';
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $newnamedir)) {
+              $upload_query = 'update person SET image = "'.$newname.'" where email= "'.$_POST["email"].'";';
               $result = mysql_query($upload_query) or die(mysql_error());
               if($result) {
               echo "<script>alert('image updated successfuly.');</script>";
@@ -73,7 +84,7 @@ else
             }
           }
         }
-			}
+        }
             //echo implode("hhh ",$_FILES);
             // if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             //   $upload_query = 'update person SET image = "'.$target_file.'" where email= "'.$_POST["email"].'";';
