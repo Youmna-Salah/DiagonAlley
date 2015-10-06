@@ -9,7 +9,7 @@
           mysql_select_db('DigonAlley');
       ?>
       <form method="post" action="edit.php" enctype="multipart/form-data">
-first_name: <input type="text" name="first_name" value="your name" /><br />
+first_name: <input  type="text" name="first_name" value="your name" /><br />
 email: <input type="text" name="email" value=""/><br />
 password: <input type="password" name="password" value=""/><br />
 Last_name: <input type="text" name="last_name" value=""/><br />
