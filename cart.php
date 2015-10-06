@@ -74,14 +74,15 @@
 				vertical-align: middle;
 				padding: 0px;
 			}
+
 			table,tr, th{
 				border: 1px groove;
 				border-color: #aaaaaa;
 				font-size: 20px;
 				margin: 10px;
         		font-variant: small-caps;
-        		color: black;
-        		height: 25px;
+        		height: 15px;
+        		vertical-align: middle;
 			}
 			h3{
 				color: white;
@@ -105,6 +106,7 @@
 				left: 175px;
 				width: 75%;
 				min-height: 75px;
+				margin: 26px;
 				background-color: rgba(255,255,255, 0.3);
 				border-radius: 5px;
 			}
@@ -114,10 +116,7 @@
 				font-family: "Times New Roman", Times, serif;
 				background-color: white;
 			}
-			div{
 
-				padding: 40px;
-			}
 			input[type="submit"],button{
 				background-color: rgb(50,50,50);
 		        width: 80px;
@@ -147,9 +146,15 @@
 		<h3>Please confirm your purchase!</h3>
 			<form  onsubmit = "return confirm(this);" action = "cart.php" method="POST">
 				<table id = "table">
-					<th class = 'normal'>Name</th>
-					<th class = 'normal'>Summary</th>
-					<th class = 'normal'>Price</th>
+					<th class = 'normal'>
+      					<a href="http://fontmeme.com/harry-potter-font/"><img src="http://fontmeme.com/embed.php?text=Name&name=HogwartsWizard.ttf&size=18&style_color=000000" alt="Harry Potter Font"></a>
+      				</th>
+					<th class = 'normal'>      
+						<a href="http://fontmeme.com/harry-potter-font/"><img src="http://fontmeme.com/embed.php?text=Summary&name=HogwartsWizard.ttf&size=18&style_color=000000" alt="Harry Potter Font"></a>
+					</th>
+					<th class = 'normal'>     
+						 <a href="http://fontmeme.com/harry-potter-font/"><img src="http://fontmeme.com/embed.php?text=Price&name=HogwartsWizard.ttf&size=18&style_color=000000" alt="Harry Potter Font"></a>
+					</th>
 				
 					<?php
 						mysql_connect('localhost', "root");
