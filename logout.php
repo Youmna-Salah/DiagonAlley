@@ -6,7 +6,8 @@
 	<?php 
 	if(session_status() !== PHP_SESSION_NONE) {
 		session_destroy();
-		//header("Location:Home.php");die;
+		
+		echo "<p>You have logged out successfully!</p>";
 	}
 	
 	?>
@@ -82,6 +83,15 @@
         vertical-align: middle;
         padding: 0px;
       }
+      p{
+      	position: absolute;
+      	vertical-align: middle;
+      	top: 400px;
+      	left: 400px;
+      	font-size: 60px;
+      	color: white;
+      	font-family: 'Magdeburg';
+      }
 	</style>
 	<head>
 		<title>Diagon Alley</title>
@@ -94,7 +104,7 @@
          </a>
         </div>
         <ul>
-            <li><a href="Shop.php">Shop</a></li>
+            <li><a href="ShopBack.php">Shop</a></li>
            
           </ul>
   </header>

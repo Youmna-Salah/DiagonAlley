@@ -191,8 +191,6 @@
 			    if( mysql_num_rows($result)>0) {
 			    	
 			    	$quantity = implode("",mysql_fetch_assoc($result));
-			    	echo $quantity;
-			    	echo $_SESSION['stock'];
 			    	if($_SESSION['stock']>=$quantity) {
 			    		echo "yesyesyes";
 			    		$stock = (int)$_SESSION['stock'] - (int)$quantity;
@@ -212,15 +210,17 @@
 			    	}
 			    	$query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
 			    	$result = mysql_query($query) or die(mysql_error());
+			    	echo '<script>alert("Purchase is done successfully!"); window.location.href= "cart.php";</script>';
 			    	$_SESSION['product_id'] = "";
 			        $_SESSION['product_name'] = "";
 			        $_SESSION['product_summary'] = "";
+			        
 		
 			    }
 			   
 			    
 			    	
-			    	header("Location:cart.php");  die;
+			    	//header("Location:cart.php");  die;
 		
 			  
 			}
@@ -230,7 +230,8 @@
 			    $query = 'delete  from cart where person_id ="'. $_SESSION['id']. '"and product_id ="'. $_SESSION['product_id'].'"';
 			    $result = mysql_query($query) or die(mysql_error());
 			    if($result) {	
-			    	header("Location:cart.php");  die;
+			    	echo "<script>alert('Deletion is done successfully!');window.location.href= 'cart.php'; </script>";
+			    	//header("Location:cart.php");  die;
 			    }
 			}
 		?>
