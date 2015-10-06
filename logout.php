@@ -1,22 +1,44 @@
 <!DOCTYPE html>
+<?php
+	session_start();
+?>
 <html>
-	<?php
-	if(session_status() != PHP_SESSION_NONE) {
+	<?php 
+	if(session_status() !== PHP_SESSION_NONE) {
 		session_destroy();
-		header("Location:Home.php");die;
+		//header("Location:Home.php");die;
 	}
 	
-
 	?>
 	<style type="text/css">
+		@keyframes fadeIn {
+			  0% {
+			    opacity: 0;
+			  }
+
+			  100% {
+			    opacity: 1;
+			  }
+			}
+			.m-scene {
+			  /** Basic styles for an animated element */
+			  
+			    animation-duration: 3s;
+			    transition-timing-function: ease-in;
+			    animation-fill-mode: both;
+			    animation-name: fadeIn;
+
+
+			  
+			}
 		body {
 			background: url(../img/3.jpg) no-repeat center center fixed;
 			background-size: cover;
 		}
-		      header{
-        display: inline-block;
+		header{
+        	display: inline-block;
 
-          vertical-align: middle; 
+          	vertical-align: middle; 
       }
       header>ul>li {
         
@@ -64,7 +86,7 @@
 	<head>
 		<title>Diagon Alley</title>
 	</head>
-	<body>
+	<body class="m-scene" id="main" >
 		<header>
      <div id = "div1">
             <a href="Home.php">
@@ -73,9 +95,7 @@
         </div>
         <ul>
             <li><a href="Shop.php">Shop</a></li>
-            <li><a href="#history">History</a></li>
-            <li><a href="cart.php">Cart</a></li>
-             <li><a href="logout.php">Log out</a></li>
+           
           </ul>
   </header>
     
