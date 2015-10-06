@@ -75,11 +75,17 @@
 	</head>
 	<body>
     <header>
-      <p class="logo">Diagon Alley</p>
-      <ul>
-        <li><a href="#shophome">Shop Home</a></li>
-        <li><a href="#history">History</a></li>
-      </ul>
+     <div id = "div1">
+            <a href="Home.php">
+             <img src="http://fontmeme.com/embed.php?text=Diagon%20Alley&name=Lumos.ttf&size=20&style_color=D4AF37" >
+         </a>
+        </div>
+        <ul>
+            <li><a href="Shop.php">Shop</a></li>
+            
+            
+             
+          </ul>
   </header>
     <div id= "welcome">
       <h1 id = "welcome_text">
@@ -92,27 +98,34 @@
     </div>
     <div id="login">
   		<form onsubmit = "return checkLoginInput(this);" action = "Home.php" method="POST">
-        <h3>Log In</h3>
-   			E-mail: <input type="text" name="email" class="defaultTextBox"  />
+      <a><img align = "middle" src="http://fontmeme.com/embed.php?text=Log In%20&name=HogwartsWizard.ttf&size=18&style_color=0C0C66" alt="Harry Potter Font"></a></br>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=E-mail:%20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+   			 <input type="text" name="email" class="defaultTextBox"  />
         <p id="login_email"></p>
-  			Password: <input type="password" name="password" class="defaultTextBox"/>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=Password:%20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+  			 <input type="password" name="password" class="defaultTextBox"/>
         <p id = "login_password"></p>
    			<input type="submit" value="LogIn" name = "LogIn" />
    		</form>
     </div>
     <div id="register">
       <form onsubmit="return checkInput(this);" action = "Home.php" method="POST" enctype="multipart/form-data">
-  
-        <h3>Register</h3>
-        First Name: <input type="text" name = "first_name" class="defaultTextBox"/></br>
-        Last Name: <input type="text" name = "last_name" class="defaultTextBox"/></br>
-        E-mail*: <input type="text" name = "email" class="defaultTextBox"/> </br>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=Register%20&name=HogwartsWizard.ttf&size=18&style_color=0C0C66" alt="Harry Potter Font"></a></br>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=First Name:%20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+         <input type="text" name = "first_name" class="defaultTextBox"/></br>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=Last Name: %20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+         <input type="text" name = "last_name" class="defaultTextBox"/></br>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=E-mail*: %20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+        <input type="text" name = "email" class="defaultTextBox"/> </br>
         <p id="error_email"> </p>
-        Password*: <input type="password" name = "password" value="" class="defaultTextBox"/></br>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=Password*: %20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+        <input type="password" name = "password" value="" class="defaultTextBox"/></br>
         <p id="error_password"></p>
-        Confirm Password*:  <input type="password" name="confirm_password" value="" class="defaultTextBox"/>
+       <a><img align = "middle" src="http://fontmeme.com/embed.php?text=Confirm Password*: %20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+        <input type="password" name="confirm_password" value="" class="defaultTextBox"/>
         <p id="error_confirm_password"></p></br>
-        image: <input type="file" name="image" value="Browse" id="image"></br>
+        <a><img align = "middle" src="http://fontmeme.com/embed.php?text=Image: %20&name=HogwartsWizard.ttf&size=12&style_color=0C0C66" alt="Harry Potter Font"></a>
+        <input type="file" name="image" value="Browse" id="image"></br>
         <h5>* required fields</h5></br>
         <input type="submit" value="register" name ="register"/>
 

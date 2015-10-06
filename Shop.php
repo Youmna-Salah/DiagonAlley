@@ -11,33 +11,60 @@
     }
   }
 ?>
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
 
-<head>
-  <link rel="shortcut icon" href="img/favicon.png">
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="css/Shop.css">
-  <title>Diagon Alley</title>
-</head>
+  <head>
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/Shop.css">
+    <title>Diagon Alley</title>
+  </head>
+  
+  <!--TODO: CLEAR DUMMY DATA-->
+  <body>
+    <header>
+      <p class="logo">Diagon Alley</p><!--
+   --><a href="#shophome">Shop Home</a><!--
+   --><a href="#history">History</a>
+    </header>
+    <div class="container">
+      <section class="asideouter">
+        <div class="aside" id="category-list">
+        </div>
+      </section><!--
+   --><section class="outer">
+        <section class="inner" id="cat-Wands">
+          <div class="item">
+            <div class="top">
+              <p class="name">Chocolate filled wand</p>
+              <img class="thumbnail" src="img/1.jpg" />
+              <p class="summary">A wand that is filled with chocolate</p>
+            </div>
+            <div class="bottom">
+              <div class="stock">
+                In stock: 1 <br>
+              </div>
+              <span class="price">
+                $12.00
+              </span>
+              <span class="buy">
+                <button class="buybutton">Buy</button>
+              </span>
+            </div>
+          </div><!--
+       --></section>
+      </section>
+    </div>
 
-<body>
-  <header>
-    <p class="logo">Diagon Alley</p>
-      <li><a href="#shophome">Shop Home</a></li>
-      <li><a href="#history">History</a></li>
-  </header>
-  
-  <aside id="category-list">
-  </aside>
-  
-  <section id="item-section">
-  </section>
-  
-  <!--Scripts-->
-  <script src="js/shop.js"></script>
-  <script>
-    //dummy data
+    <div id="pagecovering"></div>
+    <div id="invisible cover"></div>
+    <!--TODO: finish these divs--> 
+
+    <!--Scripts-->
+    <script src="js/shop.js"></script>
+    <script>
+      //dummy data
     var merchandise = [
       {
         "name": "Wands",
@@ -49,15 +76,16 @@
             "summary" : "3ammatan gamda awy",
             "image" : "img/1.jpg",
             "price" : "1999.99",
-            "stock" : "1",
+            "stock" : "0",
             "category_id" : "mesh khales awy begad"
           }
         ]
       }
     ];
     //<?//=json_encode($products)?>;
+    var selected = "";
     populateShop();
-  </script>
-</body>
+    </script>
+  </body>
 
-</html>
+  </html>

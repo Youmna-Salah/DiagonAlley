@@ -5,9 +5,34 @@
 <html>
 	<head>
 		<style type="text/css">
+			@keyframes fadeIn {
+			  0% {
+			    opacity: 0;
+			  }
+
+			  100% {
+			    opacity: 1;
+			  }
+			}
+			.m-scene {
+			  /** Basic styles for an animated element */
+			  
+			    animation-duration: 3s;
+			    transition-timing-function: ease-in;
+			    animation-fill-mode: both;
+			    animation-name: fadeIn;
+
+
+			  
+			}
 			body{
-				background-image: url('./img/1.jpg');
+				-webkit-transition: background-image 0.2s ease-in-out;
+				animation-timing-function: ease-in-out;
+				background-image: url('./img/4.png');
 				background-size: cover;
+			}
+			body:after{
+				 background: hsla(180,0%,50%,0.25);
 			}
 			header{
 				display: inline-block;
@@ -27,9 +52,12 @@
 			}
 			header {
 				width:100%;
-			  background: #834;
-			  vertical-align: middle;
-			  box-shadow: 0px 2px 1px #222;
+				margin: 0px;
+			  	background: #834;
+			  	padding: 5px;
+			  	box-shadow: 0px 0px 1px #222;
+ 				background: #834;
+ 				font-size: 20px;
 			}
 
 			header * {
@@ -54,13 +82,19 @@
 		<link rel="shortcut icon" href="img/favicon.png">
     	<title>Diagon Alley</title>
 	</head>
-	<body>
-		<header>
-		    <p class="logo">Diagon Alley</p>
-		    <ul>
-		      <li><a href="#shophome">Shop Home</a></li>
-		      <li><a href="#history">History</a></li>
-		    </ul>
-  		</header>
+	<body class="m-scene" id="main">
+		 <header>
+     <div id = "div1">
+            <a href="Home.php">
+             <img src="http://fontmeme.com/embed.php?text=Diagon%20Alley&name=Lumos.ttf&size=20&style_color=D4AF37" >
+         </a>
+        </div>
+        <ul>
+            <li><a href="Shop.php">Shop</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="cart.php">Cart</a></li>
+             <li><a href="logout.php">Log out</a></li>
+          </ul>
+  </header>
 	</body>
 </html>
