@@ -1,12 +1,19 @@
 <?php
-  mysql_connect('localhost', 'root');
+  mysql_connect('localhost', "root");
   mysql_select_db('Diagon Alley');
-  $categories = mysql_query("SELECT * FROM category ORDER BY name;") or die(mysql_error());
+  $categories = mysql_query('SELECT * FROM category;') or die(mysql_error());
   $products = array();
   $numRows = mysql_num_rows($categories);
   if ($numRows > 0) {
     while ($category = mysql_fetch_assoc($categories)) {
-      $categoryProducts = mysql_query("SELECT * FROM product WHERE category_id = ${category['id']} ORDER BY name") or die(mysql_error());
+      $categoryProductsSQL = mysql_query("SELECT * FROM product WHERE category_id = ${category['id']}") or die(mysql_error());
+       $numRowsProducts = mysql_num_rows($categoryProductsSQL);
+       $categoryProducts = array();
+       if ($numRowsProducts > 0) {
+         while ($product = mysql_fetch_assoc($categoryProductsSQL)) {
+           array_push($categoryProducts, $product);
+         }
+       }
       array_push($products, array('name' => $category['name'], 'products' => $categoryProducts));
     }
   }
@@ -17,72 +24,65 @@
   <head>
     <link rel="shortcut icon" href="img/favicon.png">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/Shop.css">
+    <link rel="stylesheet" type="text/css" href="css/shop.css">
     <title>Diagon Alley</title>
   </head>
-  
-  <!--TODO: CLEAR DUMMY DATA-->
+
   <body>
     <header>
       <p class="logo">Diagon Alley</p><!--
-   --><a href="#shophome">Shop Home</a><!--
-   --><a href="#history">History</a>
+   --><a href="#">Shop Home</a><!--
+   --><a href="history.php">History</a><!--
+   --><?php if(isset($_SESSION['email'])) {
+     echo "Welcome ${_SESSION['email']}";
+   } else {
+     echo '<a href="Home.php">Login/Register</a>';
+   }
+
+   ?>
     </header>
+
     <div class="container">
       <section class="asideouter">
         <div class="aside" id="category-list">
         </div>
       </section><!--
-   --><section class="outer">
-        <section class="inner" id="cat-Wands">
-          <div class="item">
-            <div class="top">
-              <p class="name">Chocolate filled wand</p>
-              <img class="thumbnail" src="img/1.jpg" />
-              <p class="summary">A wand that is filled with chocolate</p>
-            </div>
-            <div class="bottom">
-              <div class="stock">
-                In stock: 1 <br>
-              </div>
-              <span class="price">
-                $12.00
-              </span>
-              <span class="buy">
-                <button class="buybutton">Buy</button>
-              </span>
-            </div>
-          </div><!--
-       --></section>
-      </section>
+   --><section id="outer"></section>
     </div>
 
-    <div id="pagecovering"></div>
-    <div id="invisible cover"></div>
-    <!--TODO: finish these divs--> 
+
+    <div id="cover" onclick="hideCovers();" style="display: none;">
+    </div>
+    <div id="popup" style="display: none;">
+     <div class="fullimagediv">
+         <img class="fullimage" src="img/1.jpg">
+     </div><!--
+  --><div class="descriptiondiv">
+       <h1 id="poptitle"></h1>
+       <p id="popdescription"></p>
+       <div id="popbottom">
+         <form formaction="addtocart.php" method="post">
+           <input name="id" type="hidden" id="popid" value="">
+           Quantity: <input name="quantity" type="number" id="popnum"><br/><br/>
+           <input type="submit" id="popbuy" value="Add to cart" class="buybutton"></button>
+         </form>
+       </div>
+     </div>
+     </div>
+
+     <div id="message" onclick="hideMessage();" <?php if(!isset($_SESSION['message'])||$_SESSION['message']=='') {/*echo "style=\"display: none;\"";*/}?>>
+       <?php if(isset($_SESSION['message']) && $_SESSION['message']!='') {
+         echo $_SESSION['message'];
+         $_SESSION['message'] = '';
+       }?>
+       hi
+     </div>
 
     <!--Scripts-->
     <script src="js/shop.js"></script>
     <script>
-      //dummy data
-    var merchandise = [
-      {
-        "name": "Wands",
-        "products": [
-          {
-            "id":"1",
-            "name": "Elder Wand",
-            "description": "Gamda awy ;) gamda awy ;) gamda awy ;) gamda awy ;) gamda awy ;) gamda awy ;)",
-            "summary" : "3ammatan gamda awy",
-            "image" : "img/1.jpg",
-            "price" : "1999.99",
-            "stock" : "0",
-            "category_id" : "mesh khales awy begad"
-          }
-        ]
-      }
-    ];
-    //<?//=json_encode($products)?>;
+    var merchandise = <?= json_encode($products)?>;
+    var itemindex = {};
     var selected = "";
     populateShop();
     </script>
