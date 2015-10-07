@@ -3,13 +3,13 @@
 	session_start();
 ?>
 <html>
-	<?php 
+	<?php
 	if(session_status() !== PHP_SESSION_NONE) {
 		session_destroy();
-		
+
 		echo "<p>You have logged out successfully!</p>";
 	}
-	
+
 	?>
 	<style type="text/css">
 		@keyframes fadeIn {
@@ -23,14 +23,14 @@
 			}
 			.m-scene {
 			  /** Basic styles for an animated element */
-			  
+
 			    animation-duration: 3s;
 			    transition-timing-function: ease-in;
 			    animation-fill-mode: both;
 			    animation-name: fadeIn;
 
 
-			  
+
 			}
 		body {
 			background: url(../img/3.jpg) no-repeat center center fixed;
@@ -39,10 +39,10 @@
 		header{
         	display: inline-block;
 
-          	vertical-align: middle; 
+          	vertical-align: middle;
       }
       header>ul>li {
-        
+
         padding-right: 30px;
         padding-left: 30px;
           margin: 0px 10px 0px 0px;
@@ -71,7 +71,7 @@
         vertical-align: middle;
       }
 
-      
+
       * {
         box-sizing: border-box;
         margin: 0px;
@@ -105,9 +105,9 @@
         </div>
         <ul>
             <li><a href="ShopBack.php">Shop</a></li>
-           
+
           </ul>
   </header>
-    
+
 	</body>
 </html>
