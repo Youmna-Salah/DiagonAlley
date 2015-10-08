@@ -36,14 +36,25 @@ header {
   width: 20%;
 }
 
+a {
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.darkbutton {
+  display: inline-block;
+  background: #834;
+  color: #fff;
+  border-radius: 2px;
+  padding: 10px;
+}
+
 .navlink {
   color: #ccc;
   display: inline-block;
   line-height: 1.5em;
   margin-right: 30px;
   padding: 10px;
-  text-decoration: none;
-  vertical-align: middle;
 }
 
 .navlink:hover {
@@ -52,7 +63,7 @@ header {
 
 .card {
   background: #fff;
-  border-radius: 1px;
+  border-radius: 2px;
   box-shadow: 2px 2px 2px #888;
   color: #444;
   margin-bottom: 10px;

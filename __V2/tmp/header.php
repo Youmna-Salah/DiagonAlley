@@ -5,6 +5,7 @@
       if(logged_in()) {
         echo "<a class=\"navlink\" href=\"cart.php\">Cart</a>";
         echo "<a class=\"navlink\" href=\"profile.php\">Profile</a>";
+        echo "<a class=\"navlink\" href=\"logout.php\">Logout</a>";
       } else {
         echo "<a class=\"navlink\" href=\"welcome.php\">Login/Register</a>";
       }
